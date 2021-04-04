@@ -1,0 +1,21 @@
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.{ Row, SaveMode, SparkSession, DataFrame }
+import org.apache.spark.sql.functions._
+
+val data=spark.read.json("/FileStore/tables/part_r_00000_ace4d84a_d8cb_4eaa_a377_9d3e8bbf73b2-1")
+
+val data_explode=data.select($"guid",$"EventTS",$"EventTypeCd",$"FormCd",$"industry",$"is_service_provider",$"is_subscribed",$"name",$"rating",$"rating_type",explode_outer($"children"))
+
+val d_s=data_explode.select($"guid",$"EventTS",$"EventTypeCd",$"FormCd",$"industry",$"is_service_provider",$"is_subscribed",$"name",$"rating",$"rating_type",data_explode("col.children"),data_explode("col.guid").alias("main_child_guid"),data_explode("col.industry").alias("main_child_industry"),data_explode("col.is_service_provider").alias("main_child_is_service_provider"),data_explode("col.is_subscribed").alias("main_child_is_subscribed"),data_explode("col.name").alias("main_child_name"),data_explode("col.rating").alias("main_child_rating"),data_explode("col.rating_type").alias("main_child_rating_type"))
+
+val d_s2=d_s.select($"guid",$"EventTS",$"EventTypeCd",$"FormCd",$"industry",$"is_service_provider",$"is_subscribed",$"name",$"rating",$"rating_type",$"main_child_guid",$"main_child_industry",$"main_child_is_service_provider",$"main_child_is_subscribed",$"main_child_name",$"main_child_rating",$"main_child_rating_type",explode_outer($"children"))
+
+val d_s3=d_s2.select($"guid",$"EventTS",$"EventTypeCd",$"FormCd",$"industry",$"is_service_provider",$"is_subscribed",$"name",$"rating",$"rating_type",$"main_child_guid",$"main_child_industry",$"main_child_is_service_provider",$"main_child_is_subscribed",$"main_child_name",$"main_child_rating",$"main_child_rating_type",d_s2("col.children"),d_s2("col.guid").alias("children_guid"),d_s2("col.industry").alias("children_industry"),d_s2("col.is_service_provider").alias("children_is_service_provider"),d_s2("col.is_subscribed").alias("children_is_subscribed"),d_s2("col.name").alias("children_name"),d_s2("col.rating").alias("children_rating"),d_s2("col.rating_type").alias("children_rating_type"))
+
+val d_s4=d_s3.select($"guid",$"EventTS",$"EventTypeCd",$"FormCd",$"industry",$"is_service_provider",$"is_subscribed",$"name",$"rating",$"rating_type",$"main_child_guid",$"main_child_industry",$"main_child_is_service_provider",$"main_child_is_subscribed",$"main_child_name",$"main_child_rating",$"main_child_rating_type",$"children_guid",$"children_industry",$"children_is_service_provider",$"children_is_subscribed",$"children_name",$"children_rating",$"children_rating_type",explode_outer($"children"))
+
+val d_s5=d_s4.select($"guid",$"EventTS",$"EventTypeCd",$"FormCd",$"industry",$"is_service_provider",$"is_subscribed",$"name",$"rating",$"rating_type",$"main_child_guid",$"main_child_industry",$"main_child_is_service_provider",$"main_child_is_subscribed",$"main_child_name",$"main_child_rating",$"main_child_rating_type",$"children_guid",$"children_industry",$"children_is_service_provider",$"children_is_subscribed",$"children_name",$"children_rating",$"children_rating_type",d_s4("col.children").alias("sub_children"),d_s4("col.guid").alias("sub_children_guid"),d_s4("col.industry").alias("sub_children_industry"),d_s4("col.is_service_provider").alias("sub_children_is_service_provider"),d_s4("col.is_subscribed").alias("sub_children_is_subscribed"),d_s4("col.name").alias("sub_children_name"),d_s4("col.rating").alias("sub_children_rating"),d_s4("col.rating_type").alias("sub_children_rating_type"))
+
+val final_data=d_s5.select($"guid",$"EventTS",$"EventTypeCd",$"FormCd",$"industry",$"is_service_provider",$"is_subscribed",$"name",$"rating",$"rating_type",$"main_child_guid",$"main_child_industry",$"main_child_is_service_provider",$"main_child_is_subscribed",$"main_child_name",$"main_child_rating",$"main_child_rating_type",$"children_guid",$"children_industry",$"children_is_service_provider",$"children_is_subscribed",$"children_name",$"children_rating",$"children_rating_type",explode_outer($"sub_children").alias("sub_children"),$"sub_children_guid",$"sub_children_industry",$"sub_children_is_service_provider",$"sub_children_is_subscribed",$"sub_children_name",$"sub_children_rating",$"sub_children_rating_type")
+
+final_data.write.format("csv").mode("overwrite").option("header","true").save("/FileStore/tables/output_check.csv")
