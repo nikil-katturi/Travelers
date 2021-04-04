@@ -13,3 +13,6 @@ Just need to remove the location of the file and can be ran in the databricks or
 
 1. All the output files are in the spark -> result
 2. solutions are under spark -> code
+
+# Architecture
+This conatins a PDF that explains the highlevel design for the architecture question
