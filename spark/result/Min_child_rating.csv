@@ -1,0 +1,33 @@
+ParentCompany,ChildCompany,ChildRating,rank
+KYOCERA Display Group,"KYOCERA International, Inc. - Display Division",730,1
+KYOCERA Display Group,KYOCERA Display Corporation,770,2
+KYOCERA Document Solutions Group,KYOCERA Document Solutions Europe Group,550,1
+KYOCERA Document Solutions Group,"KYOCERA Document Solutions New England, Inc.",570,2
+KYOCERA Document Solutions Group,KYOCERA Document Solutions Asia Companies,590,3
+KYOCERA Document Solutions Group,KYOCERA Document Solutions Brazil,620,4
+KYOCERA Document Solutions Group,KYOCERA Document Solutions Inc.,630,5
+KYOCERA Document Solutions Group,TA Triumph-Adler GmbH,680,6
+KYOCERA Document Solutions Group,Ceyoniq Technology GmbH,740,7
+KYOCERA Document Solutions Group,Annodata Limited,760,8
+KYOCERA Fineceramics Group,KYOCERA UNIMERCO Group,610,1
+KYOCERA Fineceramics Group,KYOCERA Fineceramics GmbH,700,2
+KYOCERA Fineceramics Group,KYOCERA Fineceramics Ltd,760,3
+KYOCERA Group,KYOCERA Document Solutions Group,510,1
+KYOCERA Group,KYOCERA SENCO Industrial Tools Group,530,2
+KYOCERA Group,KYOCERA Corporation,560,3
+KYOCERA Group,KYOCERA Fineceramics Group,620,4
+KYOCERA Group,KYOCERA Asia Pacific Pte. Ltd.,650,5
+KYOCERA Group,"KYOCERA Precision Tools, Inc.",670,6
+KYOCERA Group,"Kyocera Solar, Inc.",710,7
+KYOCERA Group,KYOCERA France,710,7
+KYOCERA Group,KYOCERA Portugal,720,9
+KYOCERA Group,KYOCERA Russia,720,9
+KYOCERA Group,KYOCERA Italia,720,9
+KYOCERA Group,"KYOCERA Chemical (Wuxi) Co., Ltd.",730,12
+KYOCERA Group,"KYOCERA Optec Co., Ltd.",730,12
+KYOCERA Group,"KYOCERA Mexicana, S.A. de C.V.",730,12
+KYOCERA Group,KYOCERA do Brasil Componentes Industriais Ltda.,740,15
+KYOCERA Group,KYOCERA Display Group,750,16
+KYOCERA SENCO Industrial Tools Group,KYOCERA SENCO Netherlands Companies,520,1
+KYOCERA SENCO Industrial Tools Group,"KYOCERA SENCO Industrial Tools, Inc.",610,2
+KYOCERA SENCO Industrial Tools Group,SENCO Latín América S.A.S.,730,3
